@@ -1,9 +1,10 @@
+import {Calendar} from "./components/dashboard/calender";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Agri</h2>
+        <Calendar />
       </header>
     </div>
   );
