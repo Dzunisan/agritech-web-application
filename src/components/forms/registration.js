@@ -1,3 +1,5 @@
+import { Calendar } from "../dashboard/calender"
+
 export const Registration = ()=>{
     return(
         <>
@@ -184,7 +186,7 @@ export const Registration = ()=>{
     </form>
         </div>
 
-
+      <Calendar />
 
         </>
     )

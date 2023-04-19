@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 export const Calendar = () => {
   // Get the current date
   const currentDate = new Date();
-
+  const currentDay =  currentDate.getDate();
   // Initialize state for the selected date
   const [selectedDate, setSelectedDate] = useState(currentDate);
 
@@ -76,13 +76,13 @@ export const Calendar = () => {
       <div className="flex items-center justify-between mb-4">
         <button
         className="px-4 py-2 border rounded-md text-sm font-medium text-gray-500 hover:text-gray-800 focus:outline-none"
-        onClick={handlePrevMonth}>Prev Month</button>
+        onClick={handlePrevMonth}>{"<"}</button>
         <h2 className="text-lg font-medium text-gray-900">
             {selectedDate.toLocaleString("default", { month: "long", year: "numeric" })}
         </h2>
         <button 
         className="px-4 py-2 border rounded-md text-sm font-medium text-gray-500 hover:text-gray-800 focus:outline-none"
-        onClick={handleNextMonth}>Next Month</button>
+        onClick={handleNextMonth}>{">"}</button>
       </div>
       <table className="w-full text-center mr-5">
         <thead>
@@ -100,7 +100,7 @@ export const Calendar = () => {
           {calendarRows.map((week, index) => (
             <tr key={index}>
               {week.map((day, index) => (
-                <td key={index}>{day}</td>
+                <td className={`${currentDay === day ? "bg-blue-500 text-white" : ""}`} key={index}>{day}</td>
               ))}
             </tr>
           ))}
@@ -109,5 +109,7 @@ export const Calendar = () => {
     </div>
   );
 };
+
+
 
 
