@@ -1,10 +1,10 @@
-import React from 'react';
+import { HomeIcon, CloudIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 
 function SidebarComponent() {
   const menuItems = [
-    { label: 'Home', icon: 'home', href: '#' },
-    { label: 'Weather', icon: 'cloud', href: '#' },
-    { label: 'Marketplace', icon: 'shopping-cart', href: '#' },
+    { label: 'Home', icon: <HomeIcon className="w-6 h-6" />, href: '#' },
+    { label: 'Weather', icon: <CloudIcon className="w-6 h-6" />, href: '#' },
+    { label: 'Marketplace', icon: <ShoppingCartIcon className="w-6 h-6" />, href: '#' },
   ];
 
   return (
@@ -25,14 +25,7 @@ function SidebarComponent() {
                 href={item.href}
                 className="flex items-center py-2 px-4 rounded-lg text-gray-300 hover:text-white hover:bg-gray-700 transition duration-300"
               >
-                <span className="text-lg mr-3">
-                  <svg
-                    className="w-6 h-6 fill-current"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d={`M${item.icon}`} />
-                  </svg>
-                </span>
+                <span className="text-lg mr-3">{item.icon}</span>
                 <span className="text-lg">{item.label}</span>
               </a>
             </li>
@@ -51,4 +44,4 @@ function SidebarComponent() {
   );
 }
 
-export default Sidebar;
+export default SidebarComponent;

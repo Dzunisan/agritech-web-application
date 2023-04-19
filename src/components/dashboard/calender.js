@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState} from 'react'
 
 
@@ -111,3 +112,36 @@ export const Calendar = () => {
 };
 
 
+=======
+import React from "react";
+
+const Calendar = () => {
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const date = new Date();
+  const monthDays = Array.from({ length: 32 - new Date(date.getFullYear(), date.getMonth(), 32).getDate() }, (_, i) => i + 1);
+  const firstDayIndex = new Date(date.getFullYear(), date.getMonth(), 1).getDay() - 1;
+  const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay() - 1;
+  const prevMonthDays = firstDayIndex < 0 ? [] : Array.from({ length: firstDayIndex }, (_, i) => i - new Date(date.getFullYear(), date.getMonth(), 0).getDate() + 1);
+  const nextMonthDays = lastDayIndex < 0 ? [] : Array.from({ length: 6 - lastDayIndex }, (_, i) => i + 1);
+
+  const days = [...prevMonthDays, ...monthDays, ...nextMonthDays];
+
+  return (
+    <div className="bg-gray-200 rounded-lg shadow-lg p-4">
+      <div className="text-2xl font-bold mb-4">{date.toLocaleString("default", { month: "long" })} {date.getFullYear()}</div>
+      <div className="grid grid-cols-7 gap-2 mb-2">
+        {weekdays.map((day) => (
+          <div key={day} className="text-center text-gray-700 font-bold">{day}</div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-2">
+        {days.map((day, index) => (
+          <div key={index} className={`text-center font-bold ${index >= firstDayIndex && index < firstDayIndex + monthDays.length ? "text-gray-900" : "text-gray-500"}`}>{day > 0 ? day : ""}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Calendar;
+>>>>>>> 5501338 (Co-authored-by: LANGABOM <LANGABOM@users.noreply.github.com>)
