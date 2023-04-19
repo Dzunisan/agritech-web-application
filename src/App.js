@@ -1,12 +1,29 @@
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
-function App() {
+import { Registration } from './components/forms/registration';
+import { SignUp } from './components/forms/signUp';
+
+export default function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Agri</h2>
-      </header>
-    </div>
+    
+       <>
+
+<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Registration/>}>
+          <Route path="/signUp" element={<SignUp/>} />
+          <Route path="/registration" element={<Registration/>} />
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
+       </>
+   
   );
 }
 
-export default App;
+
