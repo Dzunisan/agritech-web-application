@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 
+const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"]
 
 export const Calendar = () => {
   // Get the current date
@@ -75,32 +76,29 @@ export const Calendar = () => {
     <div className="max-w-xl mx-auto bg-gray-100 rounded-lg ">
       <div className="flex items-center justify-between mb-4">
         <button
-        className="px-4 py-2 border rounded-md text-sm font-medium text-gray-500 hover:text-gray-800 focus:outline-none"
+        className="px-4 ml-10 py-2 mt-2 text-sm font-medium text-gray-500 hover:text-gray-800 focus:outline-none hover:text-xl"
         onClick={handlePrevMonth}>{"<"}</button>
         <h2 className="text-lg font-medium text-gray-900">
             {selectedDate.toLocaleString("default", { month: "long", year: "numeric" })}
         </h2>
         <button 
-        className="px-4 py-2 border rounded-md text-sm font-medium text-gray-500 hover:text-gray-800 focus:outline-none"
+        className="px-4 mr-10 py-2 mt-2 text-sm font-medium text-gray-500 hover:text-gray-800 focus:outline-none hover:text-xl"
         onClick={handleNextMonth}>{">"}</button>
       </div>
       <table className="w-full text-center mr-5">
         <thead>
           <tr className="text-gray-500 text-sm">
-            <th className="py-1">Sun</th>
-            <th className="py-1">Mon</th>
-            <th className="py-2">Tue</th>
-            <th className="py-2">Wed</th>
-            <th className="py-2">Thu</th>
-            <th className="py-2">Fri</th>
-            <th className="py-2">Sat</th>
+          {dayOfWeek.map((v,i) => (
+            <th className="py-1" key={i}>{v}</th>
+          ))}
           </tr>
         </thead>
         <tbody className="text-center">
           {calendarRows.map((week, index) => (
             <tr key={index}>
               {week.map((day, index) => (
-                <td className={`${currentDay === day ? "bg-blue-500 text-white" : ""}`} key={index}>{day}</td>
+                <td className={`${currentDay === day ? "bg-blue-500 text-white rounded-full" : ""}`} key={index}
+                onClick={""}>{day}</td>
               ))}
             </tr>
           ))}
