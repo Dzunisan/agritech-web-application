@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Modal } from './calendarModal';
 
 const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"]
 
@@ -9,6 +10,12 @@ export const Calendar = () => {
   // Initialize state for the selected date
   const [selectedDate, setSelectedDate] = useState(currentDate);
 
+  const clickedDate = (date) => {
+      console.log(date);
+  }
+  const openModal = () => {
+    <Modal open={true}/>
+  }
   // Calculate the number of days in the selected month
   const numDaysInMonth = new Date(
     selectedDate.getFullYear(),
@@ -70,7 +77,7 @@ export const Calendar = () => {
   const handleNextMonth = () => {
     setSelectedDate(new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 1));
   };
-
+console.log(selectedDate)
   // Render the calendar
   return (
     <div className="max-w-xl mx-auto bg-gray-100 rounded-lg ">
@@ -98,13 +105,17 @@ export const Calendar = () => {
             <tr key={index}>
               {week.map((day, index) => (
                 <td className={`${currentDay === day ? "bg-blue-500 text-white rounded-full" : ""}`} key={index}
-                onClick={""}>{day}</td>
+                onClick={() => clickedDate(day)}>{day}</td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
+      <button 
+      onClick={openModal}
+      className='bg-blue-300 rounded-full text-lg mt-2'>+</button>
     </div>
+   
   );
 };
 

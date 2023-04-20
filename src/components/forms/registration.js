@@ -1,8 +1,10 @@
+import { Modal } from "../dashboard/calendarModal"
 import { Calendar } from "../dashboard/calender"
 
 export const Registration = ()=>{
     return(
         <>
+              <Calendar />
     <div className="pl-10 pr-10">
     <form>
       <div className="space-y-12">
@@ -186,8 +188,8 @@ export const Registration = ()=>{
     </form>
         </div>
 
-      <Calendar />
-
+{/* 
+      <Modal /> */}
         </>
     )
    
