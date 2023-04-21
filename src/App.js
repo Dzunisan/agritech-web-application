@@ -17,7 +17,8 @@ export default function App () {
       <Routes>
         <Route path="/" element={<Registration/>}>
           <Route path="/signUp" element={<SignUp/>} />
-          <Route path="/registration" element={<Registration/>} />      
+          <Route path="/registration" element={<Registration/>} />    
+            {/* <Route path='/calenda' ele */}
         </Route>
       </Routes>
     </BrowserRouter>
